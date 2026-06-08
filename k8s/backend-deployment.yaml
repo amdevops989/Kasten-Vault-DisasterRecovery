@@ -23,7 +23,7 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: "postgres-service"
+              value: "postgres-engine"
             - name: DB_USER
               value: "devopsadmin"
             - name: DB_PASSWORD

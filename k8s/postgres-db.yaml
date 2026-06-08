@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:16-alpine
+        image: postgres:15-alpine
         imagePullPolicy: IfNotPresent
         env:
         - name: POSTGRES_USER
@@ -48,3 +48,17 @@ spec:
       resources:
         requests:
           storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-engine        # <--- Changed name to match your app's DB_HOST env
+  namespace: dev
+spec:
+  clusterIP: None             # Headless service for pod DNS resolution
+  selector:
+    app: postgres-db          # Must match the labels on your postgres-db StatefulSet pods
+  ports:
+    - port: 5432
+      targetPort: 5432
+      name: postgres

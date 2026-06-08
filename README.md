@@ -5,6 +5,10 @@ ingress gateway + minikube
 vault 
 k10
 
+before installing k10 we should add some addons csi volume ...
+
+
+
 
 simulating DR with microservices Crud app with postgress
 

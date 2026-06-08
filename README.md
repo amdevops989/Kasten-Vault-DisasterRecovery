@@ -1,5 +1,10 @@
 # Kasten-Vault-DisasterRecovery
 
+crud app + postgres
+ingress gateway + minikube 
+vault 
+k10
+
 
 simulating DR with microservices Crud app with postgress
 

@@ -34,4 +34,4 @@ spec:
     - protocol: TCP
       port: 80       # Public HTTP port
       targetPort: 80  # Nginx internal port
-  type: LoadBalancer # Exposes the application to the internet via a public IP
+  type: ClusterIP # Exposes the application to the internet via a public IP

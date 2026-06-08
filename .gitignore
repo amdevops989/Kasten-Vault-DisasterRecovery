@@ -1,0 +1,14 @@
+.env
+node_modules
+istio-1*
+
+# Terragrunt cache
+.terragrunt-cache/
+
+# Terraform runtime files
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log

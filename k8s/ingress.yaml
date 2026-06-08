@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: dev
+  annotations:
+    # This rewrite annotation strips the "/api" prefix off the URL path 
+    # before passing the clean route down to your Node.js backend.
+    # e.g., "/api/items" becomes "GET /items" inside your backend code.
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - http:
+        paths:
+          # Route A: Public Web Dashboard Traffic
+          - path: /()(.*)
+            pathType: ImplementationSpecific # Fixed: Required for regex paths
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
+
+          # Route B: Backend Core API Mesh Traffic
+          - path: /api(/(.*))
+            pathType: ImplementationSpecific # Fixed: Required for regex paths
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 3000

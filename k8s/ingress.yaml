@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
-  namespace: dev
+  namespace: crud-app
   annotations:
     # This rewrite annotation strips the "/api" prefix off the URL path 
     # before passing the clean route down to your Node.js backend.

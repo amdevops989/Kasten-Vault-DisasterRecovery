@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: crud-backend-deployment
-  namespace: dev
+  namespace: crud-app
   labels:
     app: crud-backend
+  # annotations:
+  #     k10.kasten.io/forcegenericbackup: "true"
 spec:
   replicas: 2
   selector:
@@ -23,7 +25,7 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: "postgres-engine"
+              value: "postgres-postgresql.postgresql.svc.cluster.local"
             - name: DB_USER
               value: "devopsadmin"
             - name: DB_PASSWORD
@@ -35,7 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
-  namespace: dev
+  namespace: crud-app
   labels:
     app: crud-backend # Matches the ServiceMonitor selector.spec.selector.matchLabels
 spec:
